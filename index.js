@@ -1,3 +1,22 @@
+const  inquirer = require("inquirer");
+const colors = require('colors');
+inquirer
+.prompt([
+    {
+        type:'input',
+        name:'color',
+        message:'what color do you want? (up to three chars or hex)'
+    },
+    {
+        type:'list',
+        name:'shape',
+        message:'what shape do you want?',
+        choices:['circle', 'triangle', 'square']
+    }
+]).then((answers)=>{
+    console.log(`${answers.color}`);
+    console.log(`${answers.shape}`);
+});
 /*
 GIVEN a command-line application that accepts user input
 WHEN I am prompted for text
