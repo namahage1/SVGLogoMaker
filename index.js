@@ -3,6 +3,8 @@ const colors = require('colors');
 const shape = require('./lib/shapes.js');
 const validateColor = require("validate-color").default;
 const fs = require('fs');
+const Shape = require("./lib/shapes.js")
+const SVG = require("./lib/svg.js")
 
 inquirer
 .prompt([
@@ -57,13 +59,9 @@ inquirer
     console.log(`${answers.shape}`);
     console.log(`${answers.color}`);
 
-
-    const svgCode = `
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
-        <circle cx="150" cy="100" r="80" fill="${answers.color}"/>
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${answers.textColor}">${answers.text}</text>
-    </svg>
-    `
+    const myShape = new Shape(answers.color);
+    const mySVGLogo = new SVG(answers.text, answers.textColor, myShape.render());
+    const svgCode = mySVGLogo.render();
 
     fs.writeFile("./output/logo.svg", svgCode, () => {
         console.log("Logo has been generated!")
