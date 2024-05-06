@@ -3,7 +3,7 @@ const colors = require('colors');
 const shape = require('./lib/shapes.js');
 const validateColor = require("validate-color").default;
 const fs = require('fs');
-const Shape = require("./lib/shapes.js")
+const { Circle, Triangle, Square} = require("./lib/shapes.js")
 const SVG = require("./lib/svg.js")
 
 inquirer
@@ -59,7 +59,15 @@ inquirer
     console.log(`${answers.shape}`);
     console.log(`${answers.color}`);
 
-    const myShape = new Shape(answers.color);
+    let myShape;
+    if(answers.shape == "circle") {
+        myShape = new Circle(answers.color);
+    } else if(answers.shape == "square") {
+        myShape = new Square(answers.color);
+    }else if(answers.shape == "triangle") {
+        myShape = new Triangle(answers.color);
+    }
+    
     const mySVGLogo = new SVG(answers.text, answers.textColor, myShape.render());
     const svgCode = mySVGLogo.render();
 
