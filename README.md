@@ -11,11 +11,16 @@ When run this program, it will ask for user input as Color of the text, text, co
 - first, open the terminal and install inquirer, colors, validateColor and jest by run all of these below:
     * npm install inquirer@8.2.4
     * npm install colors
-    * npm install validate-color
+    * npm i validate-color --save
     * npm install jest
+-Then, run 
+    * node index.js
 
 video link : https://drive.google.com/file/d/10LP4v5KBZxS-aovAY-4LtiJ8lrXd0s72/view
 
+github repository URL : https://github.com/namahage1/SVGLogoMaker.git
+
+README on github : https://namahage1.github.io/SVGLogoMaker/
     
    md
     ![svg logo](examples/example-screenshot.jpg)
