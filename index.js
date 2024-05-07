@@ -54,10 +54,6 @@ inquirer
         }
     }
 ]).then((answers)=>{
-    console.log(`${answers.text}`);
-    console.log(`${answers.textColor}`);
-    console.log(`${answers.shape}`);
-    console.log(`${answers.color}`);
 
     let myShape;
     if(answers.shape == "circle") {
@@ -67,30 +63,13 @@ inquirer
     }else if(answers.shape == "triangle") {
         myShape = new Triangle(answers.color);
     }
-    
+
     const mySVGLogo = new SVG(answers.text, answers.textColor, myShape.render());
     const svgCode = mySVGLogo.render();
 
-    fs.writeFile("./output/logo.svg", svgCode, () => {
+    fs.writeFile("./examples/logo.svg", svgCode, () => {
         console.log("Logo has been generated!")
     })
 
 });
 
-
-/*
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for text
-THEN I can enter up to three characters
-WHEN I am prompted for the text color
-THEN I can enter a color keyword (OR a hexadecimal number)
-WHEN I am prompted for a shape
-THEN I am presented with a list of shapes to choose from: circle, triangle, and square
-WHEN I am prompted for the shape's color
-THEN I can enter a color keyword (OR a hexadecimal number)
-WHEN I have entered input for all the prompts
-THEN an SVG file is created named `logo.svg`
-AND the output text "Generated logo.svg" is printed in the command line
-WHEN I open the `logo.svg` file in a browser
-THEN I am shown a 300x200 pixel image that matches the criteria I entered
-*/
